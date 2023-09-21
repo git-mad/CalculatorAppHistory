@@ -1,15 +1,14 @@
 package com.example.calculatorapp
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
     private lateinit var textView:TextView
-    private var historyList = mutableListOf<Double>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,19 +26,15 @@ class MainActivity : AppCompatActivity() {
         plus.setOnClickListener {
             var result = num1.text.toString().toDouble() + num2.text.toString().toDouble()
             textView.setText(result.toString())
-            historyList.add(result)
         }
 
         minus.setOnClickListener {
             var result = num1.text.toString().toDouble() - num2.text.toString().toDouble()
             textView.setText(result.toString())
-            historyList.add(result)
         }
 
         history.setOnClickListener{
-            val intent = Intent(this, History::class.java)
-            intent.putExtra("RESULT", historyList.toString())
-            startActivity(intent)
+            Toast.makeText(this, "Implement History", Toast.LENGTH_SHORT).show()
         }
 
     }
